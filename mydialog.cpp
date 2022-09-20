@@ -78,13 +78,18 @@ QGroupBox* MyDialog::createQ2group()
   q2_options.push_back(new QRadioButton(tr("Insert+F12 twice quickly")));
   q2_options.push_back(new QRadioButton(tr("Insert+T")));
 
+
   q2_group = new QButtonGroup();
   
   QVBoxLayout* layout = new QVBoxLayout;
   for (QRadioButton* btn : q2_options) {
     layout->addWidget(btn);
+
     q2_group->addButton(btn);
   }
+
+  // by default, check the first item in the radio group
+  q2_group->buttons()[0]->setChecked(true);
 
   QGroupBox* group = new QGroupBox(tr("What is the Jaws command to read the time on the system tray?"));
   group->setLayout(layout);
